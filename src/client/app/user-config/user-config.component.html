@@ -1,0 +1,20 @@
+<div class="container">
+  <div  [hidden]="submitted">
+    <h1>User Configurations</h1>
+    <form (ngSubmit)="onSubmit()" #serverUrl="ngForm">
+      <div class="form-group">
+        <label for="serverUrl">Current Openmrs Server URL:</label> {{ openmrsServer }}
+        <select class="form-control" id="openmrsServer" 
+               required
+               (ngModelChange)="saveUrlConfig($event)"
+               [ngModel]="openmrsServer" name="serverUrl"
+               #serverUrl="ngModel" >
+          <option *ngFor="let url of serverUrls" [value]="url">{{url}}</option>
+          <span class="glyphicon glyphicon-plus"></span>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-default" (click)="addNewURL()">Add New</button>
+    </form>
+  </div>
+</div>

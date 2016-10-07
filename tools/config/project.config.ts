@@ -28,8 +28,10 @@ export class ProjectConfig extends SeedConfig {
     this.APP_ASSETS = [
       ...this.APP_ASSETS,
       // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
+      {src: 'node_modules/bootstrap/dist/css/bootstrap.css', inject:true, vendor: true},
       {src: `${this.CSS_SRC}/app.css`, inject: true, vendor: false},
       {src: `${this.CSS_SRC}/app-blue.css`, inject: true, vendor: false},
+      {src: `${this.CSS_SRC}/form.css`, inject: true, vendor: false},
     ];
 
     /* Add to or override NPM module configurations: */
