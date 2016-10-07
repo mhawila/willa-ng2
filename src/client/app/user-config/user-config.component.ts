@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
   moduleId: module.id,
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'user-config.component.html'
 })
 export class UserConfigComponent implements OnInit{
+  @ViewChild('addUrlModal') 
+  urlModal: ModalComponent;
+  
   private _openmrsServer: string;
   serverUrls = [
     'http://localhost:8080/openmrs',
@@ -15,6 +19,7 @@ export class UserConfigComponent implements OnInit{
   
   ngOnInit() {
     let cachedUrls = window.localStorage.getItem('openmrsServerList');
+    console.log('here', cachedUrls);
     if(cachedUrls) {
       this.serverUrls = JSON.parse(cachedUrls);
     }
@@ -47,6 +52,14 @@ export class UserConfigComponent implements OnInit{
   }
   
   addNewURL() {
-    
+    this.urlModal.open();
+  }
+  
+  saveNewURL(url: string) {
+    this.serverUrls.push(url);
+    window.localStorage.setItem('openmrsServerList', 
+      JSON.stringify(this.serverUrls));
+    this.saveUrlConfig(url);
+    this.urlModal.close();
   }
 }

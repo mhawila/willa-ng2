@@ -18,3 +18,19 @@
     </form>
   </div>
 </div>
+
+<modal #addUrlModal>
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">Type in the URL</h4>
+    </modal-header>
+    <modal-body>
+      <form (ngSubmit)="onSubmit()" #serverUrl="ngForm">
+        <input type="text" placeholder="https://localhost:8080/openmrs"
+         class="form-control" [(ngModel)]="addUrlModal.newUrl" name="newUrl" #newUrl="ngModel"/>
+      </form>
+    </modal-body>
+    <modal-footer [show-default-buttons]="false">
+      <button type="button" class="btn btn-default" data-dismiss="addUrlModal" (click)="addUrlModal.dismiss()">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="saveNewURL(addUrlModal.newUrl)">Add</button>
+    </modal-footer>
+</modal>

@@ -12,6 +12,8 @@ import { routes } from './app.routes';
 import { AboutModule } from './about/about.module';
 import { SharedModule } from './shared/shared.module';
 
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -19,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     RouterModule.forRoot(routes),
     AboutModule,
+    Ng2Bs3ModalModule,
     SharedModule.forRoot()
   ],
   declarations: [
