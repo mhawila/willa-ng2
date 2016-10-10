@@ -8,32 +8,22 @@ export function main() {
   let fixture: ComponentFixture<UserConfigComponent>;
   
   describe('UserConfigComponent', () => {
-    beforeEach(() => {
+    beforeEach(async(() => {
       TestBed.configureTestingModule({
         declarations: [ UserConfigComponent ],
         providers: [
           { provide: APP_BASE_HREF, useValue: '/' }
         ]
+      })
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(UserConfigComponent);
+        comp = fixture.componentInstance;
       });
-    });
+    }));
     
     fit('Should display default Openmrs server url', () => {
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            console.log('Something fishy!');
-            fixture = TestBed.createComponent(UserConfigComponent);
-            comp = fixture.componentInstance;
-            let debugElement = fixture.debugElement.query(By.css('#user-default-url'));
-            let el = debugElement.nativeElement();
-            comp.openmrsServer = 'server1';
-            fixture.detectChanges();
-            expect(true).toEqual(false);
-            expect(el.textContent()).toContain(comp.openmrsServer);
-          })
-          .catch(error => console.error('something terrible happened!',error));
-      });
+      expect(true).toBe(1);
     });
   });  
 }
