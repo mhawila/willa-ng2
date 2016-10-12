@@ -43,6 +43,11 @@ module.exports = function (config) {
       // Angular itself
       { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
       { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
+      
+      'node_modules/jquery/dist/jquery.min.js',
+      { pattern: 'node_modules/ng2-bs3-modal/components/*.js', included: false, watched: false },
+      { pattern: 'node_modules/ng2-bs3-modal/directives/*.js', included: false, watched: false },
+      { pattern: 'node_modules/ng2-bs3-modal/ng2-bs3-modal.js', included: false, watched: false },
 
       { pattern: 'dist/dev/**/*.js', included: false, watched: true },
       { pattern: 'dist/dev/**/*.html', included: false, watched: true, served: true },
@@ -51,7 +56,6 @@ module.exports = function (config) {
 
       // suppress annoying 404 warnings for resources, images, etc.
       { pattern: 'dist/dev/assets/**/*', watched: false, included: false, served: true },
-
       'test-config.js',
       'dist/dev/app/system-config.js',
       'test-main.js'

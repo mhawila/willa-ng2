@@ -19,7 +19,6 @@ export class UserConfigComponent implements OnInit{
   
   ngOnInit() {
     let cachedUrls = window.localStorage.getItem('openmrsServerList');
-    console.log('here', cachedUrls);
     if(cachedUrls) {
       this.serverUrls = JSON.parse(cachedUrls);
     }
