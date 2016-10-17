@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Config } from './shared/index';
+import { QuestionService } from './question.service';
 import './operators';
 
 /**
@@ -13,7 +14,9 @@ import './operators';
 })
 
 export class AppComponent {
-  constructor() {
+  questions: any[];
+  constructor(service: QuestionService) {
     console.log('Environment config', Config);
+    this.questions = service.getQuestions();
   }
 }

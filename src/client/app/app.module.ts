@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -9,16 +9,31 @@ import { routes } from './app.routes';
 
 import { AboutModule } from './about/about.module';
 import { SharedModule } from './shared/shared.module';
+import { DynamicFormsModule } from './dynamic-forms/dynamic-forms.module';
+import { QuestionService } from './question.service';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), AboutModule, SharedModule.forRoot()],
-  declarations: [AppComponent, LoginComponent],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    RouterModule.forRoot(routes),
+    AboutModule,
+    SharedModule.forRoot(),
+    DynamicFormsModule
+  ],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    
+  ],
   providers: [{
     provide: APP_BASE_HREF,
     useValue: '<%= APP_BASE %>'
-  }],
-  bootstrap: [AppComponent]
-
+  },
+  QuestionService
+  ],
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 
 export class AppModule { }
